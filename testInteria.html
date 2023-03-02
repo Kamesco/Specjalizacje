@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div class = "demo">
+<div id ="demo1"></div>
+<div id ="demo2"></div>
+<p>view-source:https://wydarzenia.interia.pl/feed</p>
+</div>
+<script>
+const sauce = "https://wydarzenia.interia.pl/feed/"
+/*var http_request;
+http_request = new XMLHTTPRequest();
+http_request.onreadystatechange = function () {};
+http_request.open("POST", "https://wydarzenia.interia.pl/feed/");
+http_request.withCredentials = true;
+http_request.setRequestHeader("Content-Type", "application/json");
+http_request.send({ 'request': "authentication token" });
+*/
+function promise(sauce) {
+    return fetch(sauce)
+        .then(response => response.text())
+        .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+        .then(data => console.log(data))
+        ;
+
+}
+
+/*const rss = "https://wydarzenia.interia.pl/feed/";
+
+$.get(rss, function (data) {
+    $(data).find("entry").each(function () { // or "item" or whatever suits your feed
+        var el = $(this);
+
+        console.log("------------------------");
+        console.log("title      : " + el.find("title").text());
+        console.log("author     : " + el.find("author").text());
+        console.log("description: " + el.find("description").text());
+    });
+});
+
+*/
+var text, parser, xmlDoc;
+var title;
+text2 = promise(sauce);
+text1 = '<?xml version="1.0" encoding="utf-8"?>'
++'<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">'
+    +'<channel>'
+       +'<atom:link href="https://wydarzenia.interia.pl/feed/" rel="self" type="application/rss+xml" />    <title>wydarzenia.interia.pl</title>        <description><![CDATA[wydarzenia.interia.pl - Serwis informacyjny]]></description>'
+    +'<link>https://wydarzenia.interia.pl</link>'
+    +'<image>'
+        +'<title>wydarzenia.interia.pl</title>'
+        +'<link>https://wydarzenia.interia.pl</link>'
+        +'<url>https://wydarzenia.interia.pl/i/wydarzenia-ico-144x144.png</url>'
+   +'</image>'
+    +'<language>pl</language>'
+    +'<pubDate>Sun, 05 Feb 2023 09:52:42 +0100</pubDate>'
+    +'<lastBuildDate>Sun, 05 Feb 2023 09:52:42 +0100</lastBuildDate>'
+    +'<ttl>15</ttl>'
+    +'<copyright><![CDATA[Copyright (C) 2023  ]]></copyright><item>'
+        +'<title><![CDATA["Symbol pojednania między Żydami i Polakami". Media o Szewachu Weissie]]></title>'
+                    +'<description><![CDATA[<p><a href="https://wydarzenia.interia.pl/zagranica/news-symbol-pojednania-miedzy-zydami-i-polakami-media-o-szewachu-,nId,6577513"><img src="https://i.iplsc.com/symbol-pojednania-miedzy-zydami-i-polakami-media-o-szewachu/000GPQTMNRXFB8AQ-C321.jpg" alt="&quot;Symbol pojednania między Żydami i Polakami&quot;. Media o Szewachu Weissie " align="left" /></a>&quot;Jako sześcioletnie dziecko potrzebowałem pomocy. A nam pomogli zwykli, ale bohaterscy ludzie, nasi sąsiedzi z Borysławia. Pamiętajmy, że w Polsce wszyscy, którzy pomagali Żydom w czasie niemieckiej okupacji, byli zabijani, natychmiast i bez sądu&quot; - przytacza słowa zmarłego w piątek Szewacha Weissa portal Times of Israel. Były ambasador Izraela w Polsce zmarł w piątek, miał 87 lat. Uroczystości pogrzebowe zaplanowano na niedzielę, odbędą się na cmentarzu Wzgórze Herzla w Jerozolimie.</p><br clear="all" />]]></description>'
+                +'<link>https://wydarzenia.interia.pl/zagranica/news-symbol-pojednania-miedzy-zydami-i-polakami-media-o-szewachu-,nId,6577513</link>'
+        +'<guid isPermaLink="true">https://wydarzenia.interia.pl/zagranica/news-symbol-pojednania-miedzy-zydami-i-polakami-media-o-szewachu-,nId,6577513</guid>'
+        +'<pubDate>Sat, 04 Feb 2023 18:54:06 +0100</pubDate>'
+        +'<enclosure url="https://i.iplsc.com/symbol-pojednania-miedzy-zydami-i-polakami-media-o-szewachu/000GPQTMNRXFB8AQ-C321.jpg" type="image/jpeg" length="0" />'
+        +'<category>Świat</category>'
+   +'</item>'
+   +'<item>'
+        +'<title><![CDATA[Strażacy mieli robić zdjęcia zmarłym kobietom. "Komentowali ich bieliznę"]]></title>'
+                   + '<description><![CDATA[<p><a href="https://wydarzenia.interia.pl/zagranica/news-strazacy-mieli-robic-zdjecia-zmarlym-kobietom-komentowali-ic,nId,6572994"><img src="https://i.iplsc.com/strazacy-mieli-robic-zdjecia-zmarlym-kobietom-komentowali-ic/000GP9WYQSSMPPHA-C321.jpg" alt="Strażacy mieli robić zdjęcia zmarłym kobietom. &quot;Komentowali ich bieliznę&quot;" align="left" /></a>Strażacy mieli robić zdjęcia kobietom, które zginęły w wypadkach samochodowych, a następnie udostępniali je w grupie na WhatsAppie. Angielska policja wszczęła dochodzenie w tej sprawie.</p><br clear="all" />]]></description>'
+               + '<link>https://wydarzenia.interia.pl/zagranica/news-strazacy-mieli-robic-zdjecia-zmarlym-kobietom-komentowali-ic,nId,6572994</link>'
+       + '<guid isPermaLink="true">https://wydarzenia.interia.pl/zagranica/news-strazacy-mieli-robic-zdjecia-zmarlym-kobietom-komentowali-ic,nId,6572994</guid>'
+      +  '<pubDate>Thu, 02 Feb 2023 11:25:37 +0100</pubDate>'
+       + '<enclosure url="https://i.iplsc.com/strazacy-mieli-robic-zdjecia-zmarlym-kobietom-komentowali-ic/000GP9WYQSSMPPHA-C321.jpg" type="image/jpeg" length="0" />'
+     +   '<category>Świat</category>'
+    +'</item>'
+    +'<item>'
+        +'<title><![CDATA[Rada Naczelna PPS zdecydowała. Wycofuje zgodę na posługiwanie się nazwą]]></title>'
+                    +'<description><![CDATA[<p><a href="https://wydarzenia.interia.pl/kraj/news-rada-naczelna-pps-zdecydowala-wycofuje-zgode-na-poslugiwanie,nId,6579048"><img src="https://i.iplsc.com/rada-naczelna-pps-zdecydowala-wycofuje-zgode-na-poslugiwanie/000GPUPWUJ558S9W-C321.jpg" alt="Rada Naczelna PPS zdecydowała. Wycofuje zgodę na posługiwanie się nazwą" align="left" /></a>Rada Naczelna Polskiej Partii Socjalistycznej wycofała zgodę na posługiwanie się nazwą, znakami, symbolami, a także skrótami Polskiej Partii Socjalistycznej dotychczasowemu Kołu Parlamentarnemu PPS. Uchwała wchodzi w życie z dniem podjęcia, czyli od 5 lutego 2023r. Jak wynika z nieoficjalnych informacji, koło będzie nadal działać, tylko pod inną nazwą.</p><br clear="all" />]]></description>'
+                +'<link>https://wydarzenia.interia.pl/kraj/news-rada-naczelna-pps-zdecydowala-wycofuje-zgode-na-poslugiwanie,nId,6579048</link>'
+        +'<guid isPermaLink="true">https://wydarzenia.interia.pl/kraj/news-rada-naczelna-pps-zdecydowala-wycofuje-zgode-na-poslugiwanie,nId,6579048</guid>'
+        +'<pubDate>Sun, 05 Feb 2023 16:31:20 +0100</pubDate>'
+        +'<enclosure url="https://i.iplsc.com/rada-naczelna-pps-zdecydowala-wycofuje-zgode-na-poslugiwanie/000GPUPWUJ558S9W-C321.jpg" type="image/jpeg" length="0" />'
+        +'<category>Polska</category>'
+    +'</item>'
++'</channel>'
++'</rss>';
+text2 = '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">'
+   +'<channel>'
+      +'<title><![CDATA[Najnowsze wiadomości - TVN24]]></title>'
+      +'<description><![CDATA[Czytaj najnowsze wiadomości z kraju i ze świata oraz oglądaj wideo w portalu TVN24! U nas zawsze najświeższe informacje, unikalne wideo, relacje na żywo.]]></description>'
+      +'<link>https://tvn24.pl/najnowsze/</link>'
+      +'<language>pl</language>'
+      +'<copyright>TVN</copyright>'
+      +'<lastBuildDate>Thu, 09 Feb 2023 08:12:37 GMT</lastBuildDate>'
+      +'<item>'
+    +'<title><![CDATA[Zełenski dotarł do Brukseli. Weźmie udział w nadzwyczajnym posiedzeniu Rady Europejskiej ]]></title>'
+    +'<link>https://tvn24.pl/swiat/wolodymr-zelenski-w-brukseli-przylecial-na-unijny-szczyt-6742560?source=rss</link>'
+    +'<description>'
+    +'<![CDATA['
+    +'<img src="https://tvn24.pl/najnowsze/cdn-zdjecie-lnrbds-wolodymyr-zelenski-w-brukseli-6743261/alternates/LANDSCAPE_1280" alt="Zełenski dotarł do Brukseli. Weźmie udział w nadzwyczajnym posiedzeniu Rady Europejskiej " />'
+   + 'Prezydent Ukrainy Wołodymyr Zełenski dotarł do Brukseli. Zełenskiego oraz towarzyszącego mu w podróży prezydenta Francji Emmanuela Macrona powitali na lotnisku unijni liderzy - Ursula von der Leyen i Charles Michel. Ukraiński przywódca weźmie w czwartek udział w nadzwyczajnym posiedzeniu Rady Europejskiej. '
+    +']]>'
+   + '</description>'
+   + '<pubDate>Thu, 09 Feb 2023 08:12:37 GMT</pubDate>'
+   + '<guid>https://tvn24.pl/swiat/wolodymr-zelenski-w-brukseli-przylecial-na-unijny-szczyt-6742560</guid>'
++'</item><item>'
+    +'<title><![CDATA[Szef MON: nie ma exodusu z armii. A ilu zawodowych żołnierzy odeszło? ]]></title>'
+    +'<link>https://konkret24.tvn24.pl/polska/wojsko-polskie-szef-mon-nie-ma-exodusu-z-armii-ilu-zawodowych-zolnierzy-odeszlo-6733202?source=rss</link>'
+    +'<description>'
+    +'<![CDATA['
+    +'<img src="https://tvn24.pl/najnowsze/cdn-zdjecie-awt73d-szef-mon-mariusz-blaszczak-o-odejsciach-z-wojska-6732839/alternates/LANDSCAPE_1280" alt="Szef MON: nie ma exodusu z armii. A ilu zawodowych żołnierzy odeszło? " />'
+    +'Minister obrony narodowej uspokaja, że nie ma masowych odejść z wojska. Lecz dane pokazują ponad 36-procentowy wzrost liczby odejść zawodowych żołnierzy w ostatnich latach. Liczebność armii zawodowej rosła wolniej. '
+   + ']]>'
+   + '</description>'
+   + '<pubDate>Thu, 09 Feb 2023 09:48:02 GMT</pubDate>'
+   + '<guid>https://konkret24.tvn24.pl/polska/wojsko-polskie-szef-mon-nie-ma-exodusu-z-armii-ilu-zawodowych-zolnierzy-odeszlo-6733202</guid>'
++'</item><item>'
+  +  '<title><![CDATA[Rodzice winni śmierci córki przez  "doprowadzenie jej do chorobliwej otyłości". Zapadł wyrok]]></title>'
+   + '<link>https://tvn24.pl/swiat/rodzice-winni-smierci-corki-przez-doprowadzenie-jej-do-chorobliwej-otylosci-zapadl-wyrok-6733363?source=rss</link>'
+   + '<description>'
+   + '<![CDATA['
+    +'<img src="https://tvn24.pl/najnowsze/cdn-zdjecie-a2xdjd-wyrok-sadu-5745962/alternates/LANDSCAPE_1280" alt="Rodzice winni śmierci córki przez  "doprowadzenie jej do chorobliwej otyłości". Zapadł wyrok" />'
+   + 'Ława przysięgłych jednogłośnie uznała ojca szesnastolatki z Wielkiej Brytanii za winnego nieumyślnego spowodowania śmierci córki. Mężczyzna wspólnie z matką dziewczyny, niezdolnej do samodzielnego poruszania się, miał "doprowadzić ją do chorobliwej otyłości". Służby medyczne warunki, w jakich żyła zmarła, opisali jako "tragiczne". Wcześniej do zarzutów o nieumyślne spowodowanie śmierci córki przyznała się matka.'
+    +']]>'
+    +'</description>'
+   + '<pubDate>Thu, 09 Feb 2023 09:47:35 GMT</pubDate>'
+   + '<guid>https://tvn24.pl/swiat/rodzice-winni-smierci-corki-przez-doprowadzenie-jej-do-chorobliwej-otylosci-zapadl-wyrok-6733363</guid>'
++'</item><item>'
+   + '<title><![CDATA[Policja zatrzymała małżeństwo seniorów za kradzieże w supermarkecie]]></title>'
+   + '<link>https://tvn24.pl/tvnwarszawa/okolice/ciechanow-policja-zatrzymala-malzenstwo-seniorow-za-kradzieze-w-supermarkecie-6743125?source=rss</link>'
+   + '<description>'
+   + '<![CDATA['
+    +'<img src="https://tvn24.pl/najnowsze/cdn-zdjecie-p83c6c-malzenstwo-seniorow-zatrzymane-za-kradzieze-w-supermarkecie-zdj-ilustracyjne-6743106/alternates/LANDSCAPE_1280" alt="Policja zatrzymała małżeństwo seniorów za kradzieże w supermarkecie" />'
+    +'W ciągu kilku tygodni mieli okradać jeden z supermarketów w Ciechanowie. Policja zatrzymała małżeństwo seniorów: 65-letnią kobietę i 63-letniego mężczyznę. Tym razem próbowali wynieść ze sklepu artykuły spożywcze.'
+    +']]>'
+    +'</description>'
+   + '<pubDate>Thu, 09 Feb 2023 09:39:53 GMT</pubDate>'
+   + '<guid>https://tvn24.pl/tvnwarszawa/okolice/ciechanow-policja-zatrzymala-malzenstwo-seniorow-za-kradzieze-w-supermarkecie-6743125</guid>'
++'</item>'
++'</channel>'
++'</rss>';  
+function fInteria(feed){
+    parser = new window.DOMParser();
+    xmlDoc = parser.parseFromString(feed,"text/xml");
+    const ile = xmlDoc.getElementsByTagName("item");
+    var suma = "";
+    for(let i = 0; i < ile.length; i++){
+        
+        suma += "<div id = 'blok" + i + "'>";
+        suma += ile[i].getElementsByTagName("title")[0].childNodes[0].nodeValue + "<br>";
+        suma += ile[i].getElementsByTagName("description")[0].childNodes[0].nodeValue+ "<br>";
+        suma += ile[i].getElementsByTagName("pubDate")[0].childNodes[0].nodeValue+ "<br>";
+        suma += ile[i].getElementsByTagName("link")[0].childNodes[0].nodeValue+ "<br>";
+        suma += "</div>";
+        
+        
+    }
+    document.getElementById("demo1").innerHTML = suma;
+}
+function FOnet(feed){
+    parser = new window.DOMParser();
+    xmlDoc = parser.parseFromString(feed,"text/xml");
+    const ile = xmlDoc.getElementsByTagName("item");
+    var suma = "";
+    for(let i = 0; i < ile.length; i++){
+        
+        suma += "<div id = 'blok" + i + "'>";
+        suma += ile[i].getElementsByTagName("title")[0].childNodes[0].nodeValue + "<br>";
+        suma += ile[i].getElementsByTagName("description")[0].childNodes[0].nodeValue+ "<br>";
+        suma += ile[i].getElementsByTagName("pubDate")[0].childNodes[0].nodeValue+ "<br>";
+        suma += ile[i].getElementsByTagName("guid")[0].childNodes[0].nodeValue+ "<br>";
+        suma += "</div>";
+        
+        
+    }
+    document.getElementById("demo2").innerHTML = suma;
+    //var checkLink = xmlDoc.getElementsByTagName("channel");
+   // var abcd = checkLink[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
+    
+}
+
+parserTESTINTERIA = new window.DOMParser();
+xmlDocTESTINTERIA = parserTESTINTERIA.parseFromString(text1,"text/xml");
+const checkLinkINTERIA = xmlDocTESTINTERIA.getElementsByTagName("channel");
+var kontencikINTERIA = checkLinkINTERIA[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
+if(kontencikINTERIA == 'https://wydarzenia.interia.pl'){
+    fInteria(text1);
+}
+parserTESTONET = new window.DOMParser();
+xmlDocTESTONET = parserTESTONET.parseFromString(text2,"text/xml");
+const checkLinkONET = xmlDocTESTONET.getElementsByTagName("channel");
+var kontencikONET = checkLinkONET[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
+
+if(kontencikONET == 'https://tvn24.pl/najnowsze/'){
+    FOnet(text2);
+}
+
+//fInteria(text1);
+//FOnet(text2);
+
+</script>
+</body>
+</html> 
